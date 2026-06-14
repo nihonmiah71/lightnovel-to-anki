@@ -1,5 +1,9 @@
 # Anki Audio Extraction Setup & Documentation
 
+## Disclaimer
+
+The python scripts will probably not run on your system unless you installed all the right packages, some of them might only be supported for older pyhton versions (Python 3.12), debug with AI and install the required packages as needed.
+
 ## Overview & Workflow Instructions
 
 * **Select the cards** in the Anki browser you need the audio from. Make sure that all the mined sentences also appear in the target audio (for example, ensuring all selected cards belong to the same chapter for which the audio exists or was arranged).
