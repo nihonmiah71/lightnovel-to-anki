@@ -160,7 +160,7 @@ def normalize_text(text):
     text = re.sub(r'[\s+、。！？「」『』()（）.,!?\-=_+*⑨<>█░…·•\"\'’]', '', text)
     
     katakana = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョ"
-    hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだづづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉっゃゅょ"
+    hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐゲござじずぜぞだづづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉっゃゅょ"
     
     trans = str.maketrans(katakana, hiragana)
     text = text.translate(trans)
@@ -271,11 +271,21 @@ def main():
         for row in reader:
             rows.append(row)
 
+    # Spalten-Management für 'Audio'
     if 'Audio' in header:
         audio_idx = header.index('Audio')
     else:
         header.append('Audio')
         audio_idx = len(header) - 1
+        for row in rows:
+            row.append('')
+
+    # NEU: Spalten-Management für 'Audio2'
+    if 'Audio2' in header:
+        audio2_idx = header.index('Audio2')
+    else:
+        header.append('Audio2')
+        audio2_idx = len(header) - 1
         for row in rows:
             row.append('')
 
@@ -305,7 +315,9 @@ def main():
             continue
 
         if normalized_tsv_sentence in generated_audios_cache:
-            row[audio_idx] = f"[sound:{generated_audios_cache[normalized_tsv_sentence]}]"
+            sound_tag = f"[sound:{generated_audios_cache[normalized_tsv_sentence]}]"
+            row[audio_idx] = sound_tag
+            row[audio2_idx] = sound_tag  # NEU: Auch in Audio2 schreiben
             print_progress_bar(i + 1, total_rows, prefix='Progress:', suffix=f'({i + 1}/{total_rows} rows)', length=40)
             continue
 
@@ -360,7 +372,9 @@ def main():
             )
 
         generated_audios_cache[normalized_tsv_sentence] = audio_filename
-        row[audio_idx] = f"[sound:{audio_filename}]"
+        sound_tag = f"[sound:{audio_filename}]"
+        row[audio_idx] = sound_tag
+        row[audio2_idx] = sound_tag  # NEU: Auch in Audio2 schreiben
         
         # Update progress bar
         print_progress_bar(i + 1, total_rows, prefix='Progress:', suffix=f'({i + 1}/{total_rows} rows)', length=40)
