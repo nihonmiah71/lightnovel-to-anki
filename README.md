@@ -12,7 +12,7 @@ The python scripts will probably not run on your system unless you installed all
 * **Create a temporary directory** where you can temporarily save the extracted audio. As a suggestion, this could be in the same location where the newly created TSV file resides.
 * **Run the Python script** `extract_ass_audio.py` and follow the on-screen instructions.
 * **Locate the Anki media directory** (for example: `C:\Users\user\AppData\Roaming\Anki2\User 1\collection.media`) and move all the generated audio files from the temporary directory into this media directory.
-* **Inject the audio back into Anki:** Select the exact same cards you selected earlier, activate the injection extraction addon again, and choose "Injection". For the fields you want to update, choose `Sound Back`. Select the TSV file that you exported earlier (which has now been modified by the script). Click "Yes" when prompted whether you want to match using the Note IDs (`nids`).
+* **Inject the audio back into Anki:** Select the exact same cards you selected earlier, activate the injection extraction addon again, and choose "Injection". For the fields you want to update, choose `Sound Back` and `Sound Front`. Select the TSV file that you exported earlier (which has now been modified by the script). Click "Yes" when prompted whether you want to match using the Note IDs (`nids`). Map the `Audio` column of the TSV to `Sound Front` and the `Audio2` column of the TSV to `Sound Back`.
 * The Anki cards will now successfully have the audio attached to the mined example sentences.
 
 ---
