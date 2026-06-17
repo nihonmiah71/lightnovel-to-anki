@@ -6,7 +6,8 @@ The python scripts will probably not run on your system unless you installed all
 
 ## Overview & Workflow Instructions
 
-* **Select the cards** in the Anki browser you need the audio from. Make sure that all the mined sentences also appear in the target audio (for example, ensuring all selected cards belong to the same chapter for which the audio exists or was arranged).
+* The guide assumes that you have mined the cards before with the **miningsimple-note** for more information about the general(initial) **mining-flow** refer to [GitHub - miningsimple-system-overview](https://github.com/nihonmiah71/miningsimple-system-overview)
+* **Select the cards** in the Anki browser you need the audio from. Make sure that all the mined sentences also appear in the target audio (for example, ensuring all selected cards belong to the same chapter for which the audio exists or was arranged). Make sure to only use 1 card type (otherwise you would have a double entry for every note) e.g. ``deck:mining card:pronounciation``
 * **Activate the injection extraction addon** and select "Extraction". Choose the field `Sentence Plain` in HTML format with no tags, and include the Note IDs (`nids`). Save the TSV file somewhere with a fitting name, for example in the same folder where the `.ass` subtitle file and the audio for the chapter are located (you can name the TSV after the chapter, for instance).
 * **Confirm chronological order:** Ensure that the card on the first line in the created TSV is the sentence that chronologically appeared first in the light novel out of all the sentences you selected. The mined sentences in each line of the TSV should follow a chronological order (i.e., they appear successively in the text), otherwise the program might take longer to process.
 * **Create a temporary directory** where you can temporarily save the extracted audio. As a suggestion, this could be in the same location where the newly created TSV file resides.
